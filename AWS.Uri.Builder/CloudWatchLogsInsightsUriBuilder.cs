@@ -4,12 +4,17 @@ using System.Text;
 
 namespace AWS.Uri.Builder
 {
-    public class CloudWatchLogUriBuilder
+    public class CloudWatchLogsInsightsUriBuilder
     {
         public enum TimeZone
         {
             Local,
             UTC
+        }
+
+        public enum TimeReferenceType
+        {
+            Absolute
         }
 
         private readonly string _region;
@@ -18,44 +23,46 @@ namespace AWS.Uri.Builder
         private TimeZone? _timeZone;
         private string _query;
         private string[] _logGroups;
-        private string _timeType;
+        private TimeReferenceType _timeType;
         private bool _liveTail;
 
-        private CloudWatchLogUriBuilder(string region)
+        private CloudWatchLogsInsightsUriBuilder(string region)
         {
             _region = region;
         }
 
-        public static CloudWatchLogUriBuilder FromRegion(string region)
+        public static CloudWatchLogsInsightsUriBuilder FromRegion(string region)
         {
-            return new CloudWatchLogUriBuilder(region);
+            return new CloudWatchLogsInsightsUriBuilder(region);
         }
 
-        public CloudWatchLogUriBuilder WithLiveTail(bool liveTail)
+        public CloudWatchLogsInsightsUriBuilder WithLiveTail(bool liveTail)
         {
             _liveTail = liveTail;
 
             return this;
         }
 
-        public CloudWatchLogUriBuilder WithLogGroups(params string[] logGroups)
+        public CloudWatchLogsInsightsUriBuilder WithLogGroups(params string[] logGroups)
         {
-            _logGroups = logGroups;
+            _logGroups = logGroups
+                            ?.Where(logGroup => logGroup != null)
+                            .ToArray();
 
             return this;
         }
 
-        public CloudWatchLogUriBuilder WithAbsoluteRange(DateTime start, DateTime end, TimeZone timeZone)
+        public CloudWatchLogsInsightsUriBuilder WithAbsoluteRange(DateTime start, DateTime end, TimeZone timeZone)
         {
             _start = start;
             _end = end;
             _timeZone = timeZone;
-            _timeType = "ABSOLUTE";
+            _timeType = TimeReferenceType.Absolute;
 
             return this;
         }
 
-        public CloudWatchLogUriBuilder WithQuery(string query)
+        public CloudWatchLogsInsightsUriBuilder WithQuery(string query)
         {
             _query = query;
 
@@ -65,8 +72,7 @@ namespace AWS.Uri.Builder
         public System.Uri Build()
         {
             var builder =
-                new StringBuilder(
-                    $"https://{_region}.console.aws.amazon.com/cloudwatch/home?region={_region}#logsV2:logs-insights");
+                new StringBuilder($"https://{_region}.console.aws.amazon.com/cloudwatch/home?region={_region}#logsV2:logs-insights");
 
             builder.Append(ToHexString("?queryDetail=", "$", true));
 
@@ -77,7 +83,7 @@ namespace AWS.Uri.Builder
                 builder
                     .Append
                     (
-                        Escape($"end='{ToHexString(_end.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ"))}=start='{ToHexString(_start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ"))}=timeType='{_timeType}=tz='{Enum.GetName(typeof(TimeZone), _timeZone.Value)}")
+                        Escape($"end='{ToHexString(_end.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ"))}=start='{ToHexString(_start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ"))}=timeType='{Enum.GetName(typeof(TimeReferenceType), _timeType)?.ToUpper()}=tz='{Enum.GetName(typeof(TimeZone), _timeZone.Value)}")
                     );
             }
 
