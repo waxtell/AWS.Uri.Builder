@@ -15,6 +15,9 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
 
             Assert
                 .AreEqual(uri.Host, "us-east-2.console.aws.amazon.com");
+
+            Assert
+                .IsTrue(uri.Query.Contains("region=us-east-2"));
         }
 
         [Test]
