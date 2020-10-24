@@ -6,7 +6,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
 {
     public partial class CloudWatchLogsInsightsUriBuilderTests
     {
-        [Test]
+        [Theory]
         public void WithLogGroups_NoValidLogGroupsSourceIsExcluded()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
@@ -18,7 +18,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 .False(uri.Fragment.Contains("source=".Escape()));
         }
 
-        [Test]
+        [Theory]
         public void WithLogGroups_SingleValidLogGroup()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
@@ -30,7 +30,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 .True(uri.Fragment.Contains("source=(='test)".Escape()));
         }
 
-        [Test]
+        [Theory]
         public void WithLogGroups_MultipleValidLogGroups()
         {
             var uri = CloudWatchLogsInsightsUriBuilder

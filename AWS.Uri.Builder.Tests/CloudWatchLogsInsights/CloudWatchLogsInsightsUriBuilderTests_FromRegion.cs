@@ -6,7 +6,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
 {
     public partial class CloudWatchLogsInsightsUriBuilderTests
     {
-        [Test]
+        [Theory]
         public void FromRegion_ValidRegionProducesCorrectHost()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
@@ -20,7 +20,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 .IsTrue(uri.Query.Contains("region=us-east-2"));
         }
 
-        [Test]
+        [Theory]
         public void FromRegion_NullRegionThrowsArgumentException()
         {
             Assert
@@ -30,7 +30,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 );
         }
 
-        [Test]
+        [Theory]
         public void FromRegion_EmptyRegionThrowsArgumentException()
         {
             Assert
@@ -40,7 +40,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 );
         }
 
-        [Test]
+        [Theory]
         public void FromRegion_WhiteSpaceRegionThrowsArgumentException()
         {
             Assert

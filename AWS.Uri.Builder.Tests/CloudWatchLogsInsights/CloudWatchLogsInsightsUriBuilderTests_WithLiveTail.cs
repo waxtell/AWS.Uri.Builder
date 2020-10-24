@@ -6,7 +6,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
 {
     public partial class CloudWatchLogsInsightsUriBuilderTests
     {
-        [Test]
+        [Theory]
         public void WithLiveTail_TrueValueReflectedInQueryString()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
@@ -18,7 +18,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 .True(uri.Fragment.Contains("isLiveTail=true".Escape()));
         }
 
-        [Test]
+        [Theory]
         public void WithLiveTail_FalseValueReflectedInQueryString()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
@@ -30,7 +30,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 .True(uri.Fragment.Contains("isLiveTail=false".Escape()));
         }
 
-        [Test]
+        [Theory]
         public void WithLiveTail_DefaultValueOfFalseReflectedInQueryString()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
