@@ -21,7 +21,7 @@ namespace AWS.Uri.Builder.Extensions
 
         public static string ToHexString(this string source, string prefix = "*", bool upperCase = false, bool escapeConsecutive = true)
         {
-            static bool IsSpecial(char c)
+            bool IsSpecial(char c)
             {
                 return
                     !(
