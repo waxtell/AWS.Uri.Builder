@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
 {
-    public class Tests
+    public partial class CloudWatchLogsInsightsUriBuilderTests
     {
         [Test]
         public void FromRegion_ValidRegionProducesCorrectHost()

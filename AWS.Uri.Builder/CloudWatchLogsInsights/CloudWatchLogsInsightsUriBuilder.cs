@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using AWS.Uri.Builder.Extensions;
 
 namespace AWS.Uri.Builder.CloudWatchLogsInsights
 {
@@ -69,101 +70,42 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
             var builder =
                 new StringBuilder($"https://{_region}.console.aws.amazon.com/cloudwatch/home?region={_region}#logsV2:logs-insights");
 
-            builder.Append(ToHexString("?queryDetail=", "$", true));
+            builder.Append("?queryDetail=".ToHexString("$", true));
 
-            builder.Append(Escape("=("));
+            builder.Append("=(".Escape());
 
             if (_end.HasValue && _start.HasValue && _timeZone.HasValue)
             {
                 builder
                     .Append
                     (
-                        Escape($"end='{ToHexString(_end.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ"))}=start='{ToHexString(_start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ"))}=timeType='{Enum.GetName(typeof(TimeReferenceType), _timeType)?.ToUpper()}=tz='{Enum.GetName(typeof(TimeZone), _timeZone.Value)}")
+                        $"end='{_end.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ").ToHexString()}=start='{_start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ").ToHexString()}=timeType='{Enum.GetName(typeof(TimeReferenceType), _timeType)?.ToUpper()}=tz='{Enum.GetName(typeof(TimeZone), _timeZone.Value)}"
+                            .Escape()
                     );
             }
 
             if (!string.IsNullOrEmpty(_query))
             {
-                builder.Append(Escape("=editorString='"));
-                builder.Append(ToHexString($"{_query}\n", "*", false, false));
+                builder.Append("=editorString='".Escape());
+                builder.Append($"{_query}\n".ToHexString("*", false, false));
             }
 
-            builder.Append(Escape($"=isLiveTail={_liveTail.ToString().ToLower()}"));
+            builder.Append($"=isLiveTail={_liveTail.ToString().ToLower()}".Escape());
 
             if (_logGroups != null && _logGroups.Any())
             {
                 builder
                     .Append
                     (
-                        Escape($"=source=(='{string.Join("='", _logGroups.Select(logGroup => ToHexString(logGroup)))})")
+                        $"=source=(='{string.Join("='", _logGroups.Select(logGroup => logGroup.ToHexString()))})"
+                            .Escape()
                     );
             }
 
-            builder.Append(Escape(")"));
+            builder.Append(")".Escape());
 
             return 
                 new System.Uri(builder.ToString());
-
-            static string Escape(string src)
-            {
-                return
-                    ToHexString
-                    (
-                        src
-                            .Replace("=", "%~")
-                            .Replace("'", "%'")
-                            .Replace("(", "%(")
-                            .Replace(")", "%)")
-                        , "$",
-                        true
-                    );
-            }
-
-            static string ToHexString(string source, string prefix = "*", bool upperCase = false, bool escapeConsecutive = true)
-            {
-                static bool IsSpecial(char c)
-                {
-                    return
-                        !(
-                            char.IsLetterOrDigit(c) ||
-                            (c == '_') ||
-                            (c == '-') ||
-                            (c == '*') ||
-                            (c == '.')
-                        );
-                }
-
-                var sb = new StringBuilder();
-                var toHexFormatString = upperCase ? "X2" : "x2";
-
-                var isConsecutive = false;
-
-                foreach (var c in source)
-                {
-                    if (IsSpecial(c))
-                    {
-                        if (isConsecutive && escapeConsecutive)
-                        {
-                            isConsecutive = false;
-                        }
-                        else
-                        {
-                            sb.Append(prefix);
-                            isConsecutive = true;
-                        }
-
-                        sb.Append(((int)c).ToString(toHexFormatString));
-                    }
-                    else
-                    {
-                        isConsecutive = false;
-                        sb.Append(c);
-                    }
-                }
-
-                return
-                    sb.ToString();
-            }
-        }
+       }
     }
 }
