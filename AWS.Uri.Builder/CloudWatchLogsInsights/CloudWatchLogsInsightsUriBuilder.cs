@@ -42,7 +42,7 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
         public CloudWatchLogsInsightsUriBuilder WithLogGroups(params string[] logGroups)
         {
             _logGroups = logGroups
-                            ?.Where(logGroup => logGroup != null)
+                            ?.Where(logGroup => !string.IsNullOrWhiteSpace(logGroup))
                             .ToArray();
 
             return this;
@@ -79,7 +79,7 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
                 builder
                     .Append
                     (
-                        $"end='{_end.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ").ToHexString()}=start='{_start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ").ToHexString()}=timeType='{Enum.GetName(typeof(TimeReferenceType), _timeType)?.ToUpper()}=tz='{Enum.GetName(typeof(TimeZone), _timeZone.Value)}"
+                        $"end='{_end.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ").ToHexString()}=start='{_start.Value.ToString("yyyy-MM-dd'T'HH:mm:ss.fffZ").ToHexString()}=timeType='{_timeType.TryGetName()?.ToUpper()}=tz='{_timeZone.Value.TryGetName()}"
                             .Escape()
                     );
             }
