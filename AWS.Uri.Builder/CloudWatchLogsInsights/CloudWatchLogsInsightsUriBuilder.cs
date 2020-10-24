@@ -22,7 +22,13 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
 
         public static CloudWatchLogsInsightsUriBuilder FromRegion(string region)
         {
-            return new CloudWatchLogsInsightsUriBuilder(region);
+            if (string.IsNullOrWhiteSpace(region))
+            {
+                throw new ArgumentException($"{nameof(region)} can not be null or empty!");
+            }
+
+            return 
+                new CloudWatchLogsInsightsUriBuilder(region);
         }
 
         public CloudWatchLogsInsightsUriBuilder WithLiveTail(bool liveTail)
@@ -128,6 +134,7 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
                 }
 
                 var sb = new StringBuilder();
+                var toHexFormatString = upperCase ? "X2" : "x2";
 
                 var isConsecutive = false;
 
@@ -145,7 +152,7 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
                             isConsecutive = true;
                         }
 
-                        sb.Append(((int)c).ToString(upperCase ? "X2" : "x2"));
+                        sb.Append(((int)c).ToString(toHexFormatString));
                     }
                     else
                     {
