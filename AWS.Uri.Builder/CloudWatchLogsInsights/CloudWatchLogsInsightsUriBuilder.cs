@@ -2,21 +2,10 @@
 using System.Linq;
 using System.Text;
 
-namespace AWS.Uri.Builder
+namespace AWS.Uri.Builder.CloudWatchLogsInsights
 {
     public class CloudWatchLogsInsightsUriBuilder
     {
-        public enum TimeZone
-        {
-            Local,
-            UTC
-        }
-
-        public enum TimeReferenceType
-        {
-            Absolute
-        }
-
         private readonly string _region;
         private DateTime? _start;
         private DateTime? _end;
