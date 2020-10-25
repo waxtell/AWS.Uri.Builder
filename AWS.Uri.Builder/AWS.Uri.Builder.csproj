@@ -8,6 +8,7 @@
     <RepositoryUrl>https://github.com/waxtell/AWS.Uri.Builder.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>1.0.0- Initial release</PackageReleaseNotes>
+    <Version>1.0.1</Version>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
