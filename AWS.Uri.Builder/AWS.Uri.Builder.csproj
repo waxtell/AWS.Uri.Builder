@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
     <Authors>Will Axtell</Authors>
     <Description>Fluent URI builder for AWS services.</Description>
     <PackageProjectUrl>https://github.com/waxtell/AWS.Uri.Builder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/waxtell/AWS.Uri.Builder.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>1.0.0- Initial release</PackageReleaseNotes>
-    <Version>1.0.1</Version>
+    <PackageReleaseNotes>1.0.2- Initial release</PackageReleaseNotes>
+    <Version>1.0.2</Version>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">

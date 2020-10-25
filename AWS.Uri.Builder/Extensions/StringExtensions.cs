@@ -2,7 +2,7 @@
 
 namespace AWS.Uri.Builder.Extensions
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static string Escape(this string src)
         {
