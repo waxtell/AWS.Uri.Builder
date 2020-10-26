@@ -1,8 +1,8 @@
-using AWS.Uri.Builder.CloudWatchLogsInsights;
-using AWS.Uri.Builder.Extensions;
+using AWSConsole.Uri.Builder.CloudWatchLogsInsights;
+using AWSConsole.Uri.Builder.Extensions;
 using NUnit.Framework;
 
-namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
+namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
 {
     public partial class CloudWatchLogsInsightsUriBuilderTests
     {

@@ -1,5 +1,5 @@
-# AWS.Uri.Builder
-Fluent builder for AWS service URIs.  Presently only CloudWatch Logs Insights uri generation is implemented.
+# AWSConsole.Uri.Builder
+Fluent builder for AWS console service URIs.  Presently only CloudWatch Logs Insights uri generation is implemented.
 
 ![Build](https://github.com/waxtell/AWS.Uri.Builder/workflows/Build/badge.svg)
 ![Publish to nuget](https://github.com/waxtell/AWS.Uri.Builder/workflows/Publish%20to%20nuget/badge.svg?branch=main)

@@ -1,9 +1,8 @@
 using System;
-using AWS.Uri.Builder.CloudWatchLogsInsights;
+using AWSConsole.Uri.Builder.CloudWatchLogsInsights;
 using NUnit.Framework;
-using TimeZone = AWS.Uri.Builder.CloudWatchLogsInsights.TimeZone;
 
-namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
+namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
 {
     public partial class CloudWatchLogsInsightsUriBuilderTests
     {
@@ -11,20 +10,14 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
         public void FromRegion_ValidRegionProducesCorrectHost()
         {
             var uri = CloudWatchLogsInsightsUriBuilder
-                .FromRegion("us-east-2")
-                //                      .Build();
-                .WithLogGroups("your_log_group")
-                .WithAbsoluteRange(DateTime.UtcNow, DateTime.UtcNow.AddMinutes(10), TimeZone.UTC)
-                .WithQuery(
-                    $"fields @timestamp, @message\n| filter @requestId = \"your_request_id\"\n| sort @timestamp desc")
-                .Build()
-                .ToString();
-Console.WriteLine(uri);
-            //Assert
-            //    .AreEqual(uri.Host, "us-east-2.console.aws.amazon.com");
+                        .FromRegion("us-east-2")
+                        .Build();
 
-            //Assert
-            //    .IsTrue(uri.Query.Contains("region=us-east-2"));
+            Assert
+                .AreEqual(uri.Host, "us-east-2.console.aws.amazon.com");
+
+            Assert
+                .IsTrue(uri.Query.Contains("region=us-east-2"));
         }
 
         [Theory]
