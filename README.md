@@ -10,7 +10,7 @@ Usage:
 var uri = CloudWatchLogsInsightsUriBuilder
             .FromRegion("us-east-2")
             .WithLogGroups("your_log_group")
-            .WithAbsoluteRange(DateTime.UtcNow, DateTime.UtcNow.AddMinutes(10), TimeZone.UTC)
+            .WithAbsoluteRange(DateTime.UtcNow, DateTime.UtcNow.AddMinutes(10), TimeZoneType.UTC)
             .WithQuery($"fields @timestamp, @message\n| filter @requestId = \"your_request_id\"\n| sort @timestamp desc")
             .Build();
 ```
