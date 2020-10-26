@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30608.117
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Uri.Builder", "AWS.Uri.Builder\AWS.Uri.Builder.csproj", "{BB562C31-99DE-4C59-BB9E-C1CB6C0BB226}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSConsole.Uri.Builder", "AWSConsole.Uri.Builder\AWSConsole.Uri.Builder.csproj", "{BB562C31-99DE-4C59-BB9E-C1CB6C0BB226}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Uri.Builder.Tests", "AWS.Uri.Builder.Tests\AWS.Uri.Builder.Tests.csproj", "{58D927EB-4432-4C31-8A5D-2DAEC235B2A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWSConsole.Uri.Builder.Tests", "AWSConsole.Uri.Builder.Tests\AWSConsole.Uri.Builder.Tests.csproj", "{58D927EB-4432-4C31-8A5D-2DAEC235B2A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AWS.Uri.Builder\AWS.Uri.Builder.csproj" />
+    <ProjectReference Include="..\AWSConsole.Uri.Builder\AWSConsole.Uri.Builder.csproj" />
   </ItemGroup>
 
 </Project>

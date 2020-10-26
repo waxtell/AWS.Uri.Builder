@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using AWS.Uri.Builder.Extensions;
+using AWSConsole.Uri.Builder.Extensions;
 
-namespace AWS.Uri.Builder.CloudWatchLogsInsights
+namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights
 {
     public class CloudWatchLogsInsightsUriBuilder
     {
         private readonly string _region;
         private DateTime? _start;
         private DateTime? _end;
-        private TimeZone? _timeZone;
+        private TimeZoneType? _timeZone;
         private string _query;
         private string[] _logGroups;
         private TimeReferenceType _timeType;
@@ -48,7 +48,7 @@ namespace AWS.Uri.Builder.CloudWatchLogsInsights
             return this;
         }
 
-        public CloudWatchLogsInsightsUriBuilder WithAbsoluteRange(DateTime start, DateTime end, TimeZone timeZone)
+        public CloudWatchLogsInsightsUriBuilder WithAbsoluteRange(DateTime start, DateTime end, TimeZoneType timeZone)
         {
             _start = start;
             _end = end;

@@ -1,8 +1,8 @@
-using AWS.Uri.Builder.CloudWatchLogsInsights;
-using AWS.Uri.Builder.Extensions;
+using AWSConsole.Uri.Builder.CloudWatchLogsInsights;
+using AWSConsole.Uri.Builder.Extensions;
 using NUnit.Framework;
 
-namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
+namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
 {
     public partial class CloudWatchLogsInsightsUriBuilderTests
     {
@@ -15,7 +15,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .False(uri.Fragment.Contains("source=".Escape()));
+                .False((bool) uri.Fragment.Contains("source=".Escape()));
         }
 
         [Theory]
@@ -27,7 +27,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .True(uri.Fragment.Contains("source=(='test)".Escape()));
+                .True((bool) uri.Fragment.Contains("source=(='test)".Escape()));
         }
 
         [Theory]
@@ -39,7 +39,7 @@ namespace AWS.Uri.Builder.Tests.CloudWatchLogsInsights
                 .Build();
 
             Assert
-                .True(uri.Fragment.Contains("source=(='test1='test2)".Escape()));
+                .True((bool) uri.Fragment.Contains("source=(='test1='test2)".Escape()));
         }
     }
 }

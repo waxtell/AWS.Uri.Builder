@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AWS.Uri.Builder.Extensions
+namespace AWSConsole.Uri.Builder.Extensions
 {
     internal static class EnumExtensions
     {
