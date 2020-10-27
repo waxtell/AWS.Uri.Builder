@@ -4,7 +4,7 @@ Fluent builder for AWS console service URIs.  Presently only CloudWatch Logs Ins
 ![Build](https://github.com/waxtell/AWS.Uri.Builder/workflows/Build/badge.svg)
 ![Publish to nuget](https://github.com/waxtell/AWS.Uri.Builder/workflows/Publish%20to%20nuget/badge.svg?branch=main)
 
-Usage for Insights:
+## Usage for Insights:
 
 ``` csharp
 var uri = CloudWatchLogsInsightsUriBuilder
@@ -22,7 +22,7 @@ Which, when opened in the AWS CloudWatch Logs Insights Portal looks like this:
 
 ![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/insightsportal.png)
 
-Usage for XRay:
+## Usage for XRay:
 
 ``` csharp
 var uri = XRayUriBuilder
