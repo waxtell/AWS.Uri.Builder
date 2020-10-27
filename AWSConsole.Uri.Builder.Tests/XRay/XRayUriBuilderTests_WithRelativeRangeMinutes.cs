@@ -23,9 +23,9 @@ namespace AWSConsole.Uri.Builder.Tests.XRay
         public void WithRelativeRangeMinutes_ZeroHoursTenMinutes()
         {
             var uri = XRayUriBuilder
-                .FromRegion("us-east-2")
-                .WithRelativeRangeMinutes(10)
-                .Build();
+                        .FromRegion("us-east-2")
+                        .WithRelativeRangeMinutes(10)
+                        .Build();
 
             Assert
                 .IsTrue(uri.Fragment.Contains($"{Constants.timeRange}=PT10M"));
@@ -35,9 +35,9 @@ namespace AWSConsole.Uri.Builder.Tests.XRay
         public void WithRelativeRangeMinutes_OneHourTenMinutes()
         {
             var uri = XRayUriBuilder
-                .FromRegion("us-east-2")
-                .WithRelativeRangeMinutes(70)
-                .Build();
+                        .FromRegion("us-east-2")
+                        .WithRelativeRangeMinutes(70)
+                        .Build();
 
             Assert
                 .IsTrue(uri.Fragment.Contains($"{Constants.timeRange}=PT1H10M"));
