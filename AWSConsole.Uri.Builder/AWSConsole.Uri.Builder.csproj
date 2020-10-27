@@ -7,8 +7,9 @@
     <PackageProjectUrl>https://github.com/waxtell/AWSConsole.Uri.Builder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/waxtell/AWSConsole.Uri.Builder.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>1.0.0- Initial release</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <PackageReleaseNotes>1.1.0- Add support for XRay trace uri creation
+1.0.0- Initial release</PackageReleaseNotes>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
