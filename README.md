@@ -1,10 +1,10 @@
 # AWSConsole.Uri.Builder
-Fluent builder for AWS console service URIs.  Presently only CloudWatch Logs Insights uri generation is implemented.
+Fluent builder for AWS console service URIs.  Presently only CloudWatch Logs Insights and XRay uri generation is implemented.
 
 ![Build](https://github.com/waxtell/AWS.Uri.Builder/workflows/Build/badge.svg)
 ![Publish to nuget](https://github.com/waxtell/AWS.Uri.Builder/workflows/Publish%20to%20nuget/badge.svg?branch=main)
 
-Usage:
+Usage for Insights:
 
 ``` csharp
 var uri = CloudWatchLogsInsightsUriBuilder
@@ -21,3 +21,21 @@ https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logsV2
 Which, when opened in the AWS CloudWatch Logs Insights Portal looks like this:
 
 ![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/insightsportal.png)
+
+Usage for XRay:
+
+``` csharp
+var uri = XRayUriBuilder
+			.FromRegion("us-east-2")
+			.WithFilter("service(\"your service name goes here\")")			
+			.WithRelativeRangeMinutes(70)
+			.Build();
+```
+Generates the following query string:
+```
+https://us-east-2.console.aws.amazon.com/xray/home?region=us-east-2#/traces?filter=service("your service name goes here")&timeRange=PT1H10M
+```
+Which, when opened in the AWS XRay Traces Portal looks like this:
+
+![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/xrayportal.png)
+
