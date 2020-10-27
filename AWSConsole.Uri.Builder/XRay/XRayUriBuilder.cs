@@ -29,7 +29,7 @@ namespace AWSConsole.Uri.Builder.XRay
 
         public XRayUriBuilder WithAbsoluteRange(DateTime start, DateTime end)
         {
-            _queryString[Constants.timeRange] = $"{start.ToString(Constants.DateTimeFormatString)}~'{end.ToString(Constants.DateTimeFormatString)}";
+            _queryString[Constants.timeRange] = $"{start.ToString(Constants.DateTimeFormatString)}~{end.ToString(Constants.DateTimeFormatString)}";
 
             return this;
         }
