@@ -34,7 +34,7 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights
                 new CloudWatchLogsInsightsUriBuilder(region);
         }
 
-        public CloudWatchLogsInsightsUriBuilder WithLiveTail(bool liveTail)
+        public CloudWatchLogsInsightsUriBuilder WithLiveTail(bool liveTail = true)
         {
             _queryComponents[LiveTail] = new LiveTailComponent(liveTail);
 
@@ -55,7 +55,7 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights
             return this;
         }
 
-        public CloudWatchLogsInsightsUriBuilder WithAbsoluteRange(DateTime start, DateTime end, TimeZoneType timeZoneType)
+        public CloudWatchLogsInsightsUriBuilder WithAbsoluteRange(DateTime start, DateTime end, TimeZoneType timeZoneType = TimeZoneType.UTC)
         {
             _queryComponents[TimeRange] = new AbsoluteTimeRangeComponent(start, end, timeZoneType);
 
