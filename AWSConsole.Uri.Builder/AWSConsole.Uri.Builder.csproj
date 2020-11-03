@@ -19,4 +19,8 @@
     </AssemblyAttribute>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CloudWatchLogs\Metadata\" />
+  </ItemGroup>
+
 </Project>
