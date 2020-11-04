@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AWSConsole.Uri.Builder.Extensions
+﻿namespace AWSConsole.Uri.Builder.Extensions
 {
     internal static class CharExtensions
     {

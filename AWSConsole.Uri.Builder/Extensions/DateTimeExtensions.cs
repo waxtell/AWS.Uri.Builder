@@ -2,12 +2,14 @@
 
 namespace AWSConsole.Uri.Builder.Extensions
 {
-    public static class DateTimeExtensions
+    internal static class DateTimeExtensions
     {
+        private static readonly DateTime Epoch = new DateTime(1970, 1, 1);
+
         public static long ToEpochMilliseconds(this DateTime datetime) =>
             (long)
                 datetime
-                    .Subtract(new DateTime(1970, 1, 1))
+                    .Subtract(Epoch)
                         .TotalMilliseconds;
     }
 }
