@@ -11,16 +11,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogs
         {
             var uri = CloudWatchLogsUriBuilder
                         .FromRegion("us-east-2")
-                        .WithLogGroup("/onprem/api/RegisterApi/prod")
-                        //.WithRelativeRangeMilliseconds(600000)
-                        //.WithAbsoluteRange(DateTime.UtcNow.AddHours(-1), DateTime.UtcNow.AddHours(5))
-                        .WithFilter("{ $.Level = \"Error\" }")
-                        .WithLogStreamNameFilter("2020-11-02")
-                        .WithLogStream("2020-11-02-06-52-03_TRProdAPI01_12ad2df0-fbd1-40a9-bc93-a483f63e4f09")
-                        .WithLogGroupNameFilter("aws/")
                         .Build();
-
-            var s = uri.ToString();
 
             Assert
                 .AreEqual(uri.Host, "us-east-2.console.aws.amazon.com");

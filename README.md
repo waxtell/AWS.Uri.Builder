@@ -1,5 +1,5 @@
 # AWSConsole.Uri.Builder
-Fluent builder for AWS console service URIs.  Presently only CloudWatch Logs Insights and XRay uri generation is implemented.
+Fluent builder for AWS console service URIs.  Presently only CloudWatch Logs, CloudWatch Logs Insights and XRay uri generation are implemented.
 
 ![Build](https://github.com/waxtell/AWS.Uri.Builder/workflows/Build/badge.svg)
 ![Publish to nuget](https://github.com/waxtell/AWS.Uri.Builder/workflows/Publish%20to%20nuget/badge.svg?branch=main)
@@ -39,3 +39,18 @@ Which, when opened in the AWS XRay Traces Portal looks like this:
 
 ![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/xrayportal.png)
 
+## Usage for CloudWatch Logs:
+
+``` csharp
+var uri = CloudWatchLogsUriBuilder
+            .FromRegion("us-east-2")
+            .WithLogGroupNameFilter("aws/lambda")
+            .Build();
+```
+Generates the following query string:
+```
+https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logsV2:log-groups$3FlogGroupNameFilter$3Daws$252Flambda
+```
+Which, when opened in the AWS CloudWatch Logs Portal looks like this:
+
+![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/logsportal.png)
