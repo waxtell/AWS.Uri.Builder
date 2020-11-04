@@ -50,11 +50,6 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogs
             return this;
         }
 
-        /// <summary>
-        /// Search for log groups that match the provided name filter.
-        /// </summary>
-        /// <param name="logGroupNameFilter">Select log groups that match the name filter.</param>
-        /// <returns></returns>
         public IBuild WithLogGroupNameFilter(string logGroupNameFilter)
         {
             _queryComponents[LogGroupNameFilter] = new LogGroupNameFilterComponent(logGroupNameFilter);
