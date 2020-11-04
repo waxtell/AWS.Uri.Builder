@@ -17,7 +17,7 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogs.Components
         public string Build()
         {
             return
-                $"?start={_start.ToEpochSeconds()}&end={_end.ToEpochSeconds()}".ToHexString("$", true);
+                $"?start={_start.ToEpochMilliseconds()}&end={_end.ToEpochMilliseconds()}".ToHexString("$", true);
         }
     }
 }
