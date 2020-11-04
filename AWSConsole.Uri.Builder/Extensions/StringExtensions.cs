@@ -6,33 +6,26 @@ namespace AWSConsole.Uri.Builder.Extensions
     {
         public static string Escape(this string src)
         {
-            return
-                ToHexString
-                (
-                    src
-                        .Replace("=", "%~")
-                        .Replace("'", "%'")
-                        .Replace("(", "%(")
-                        .Replace(")", "%)")
-                    , "$",
-                    true
-                );
+            var sb = new StringBuilder();
+
+            foreach (var c in src)
+            {
+                if (c.IsSpecial())
+                {
+                    sb.Append('%');
+                }
+
+                sb.Append(c);
+            }
+
+            return 
+                sb
+                    .ToString()
+                    .ToHexString("$", true);
         }
 
         public static string ToHexString(this string source, string prefix = "*", bool upperCase = false, bool escapeConsecutive = true)
         {
-            bool IsSpecial(char c)
-            {
-                return
-                    !(
-                        char.IsLetterOrDigit(c) ||
-                        (c == '_') ||
-                        (c == '-') ||
-                        (c == '*') ||
-                        (c == '.')
-                    );
-            }
-
             var sb = new StringBuilder();
             var toHexFormatString = upperCase ? "X2" : "x2";
 
@@ -40,7 +33,7 @@ namespace AWSConsole.Uri.Builder.Extensions
 
             foreach (var c in source)
             {
-                if (IsSpecial(c))
+                if (c.IsSpecial())
                 {
                     if (isConsecutive && escapeConsecutive)
                     {

@@ -7,10 +7,11 @@
     <PackageProjectUrl>https://github.com/waxtell/AWSConsole.Uri.Builder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/waxtell/AWSConsole.Uri.Builder.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageReleaseNotes>1.1.1- Fixed XRay absolute date format specifier
+    <PackageReleaseNotes>1.2.0- Added support for CloudWatch logs
+1.1.1- Fixed XRay absolute date format specifier
 1.1.0- Add support for XRay trace uri creation
 1.0.0- Initial release</PackageReleaseNotes>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
