@@ -5,7 +5,7 @@ using AWSConsole.Uri.Builder.CloudWatchLogs.Components;
 
 namespace AWSConsole.Uri.Builder.CloudWatchLogs
 {
-    public class CloudWatchLogsUriBuilder
+    public class CloudWatchLogsUriBuilder : ILogOptions, ILogGroupOptions, ILogStreamOptions, IBuild
     {
         private readonly string _region;
         private readonly IDictionary<string, ILogsUriComponent> _queryComponents = new Dictionary<string, ILogsUriComponent>();
@@ -22,7 +22,12 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogs
             _region = region;
         }
 
-        public static CloudWatchLogsUriBuilder FromRegion(string region)
+        /// <summary>
+        /// Creates a basic CloudWatch Logs URI for the provided region.
+        /// </summary>
+        /// <param name="region">The AWS region for the URI</param>
+        /// <returns></returns>
+        public static ILogOptions FromRegion(string region)
         {
             if (string.IsNullOrWhiteSpace(region))
             {
@@ -33,49 +38,59 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogs
                 new CloudWatchLogsUriBuilder(region);
         }
 
-        public CloudWatchLogsUriBuilder WithLogGroup(string logGroup)
+        /// <summary>
+        /// Restrict filters, etc. to the provided log group.
+        /// </summary>
+        /// <param name="logGroup">Searches, etc. will apply exclusively to this log group.</param>
+        /// <returns></returns>
+        public ILogGroupOptions WithLogGroup(string logGroup)
         {
             _queryComponents[LogGroup] = new LogGroupComponent(logGroup);
 
             return this;
         }
-        
-        public CloudWatchLogsUriBuilder WithLogGroupNameFilter(string logGroupNameFilter)
+
+        /// <summary>
+        /// Search for log groups that match the provided name filter.
+        /// </summary>
+        /// <param name="logGroupNameFilter">Select log groups that match the name filter.</param>
+        /// <returns></returns>
+        public IBuild WithLogGroupNameFilter(string logGroupNameFilter)
         {
             _queryComponents[LogGroupNameFilter] = new LogGroupNameFilterComponent(logGroupNameFilter);
 
             return this;
         }
 
-        public CloudWatchLogsUriBuilder WithLogStream(string logStream)
+        public ILogStreamOptions WithLogStream(string logStream)
         {
             _queryComponents[LogStream] = new LogStreamComponent(logStream);
 
             return this;
         }
 
-        public CloudWatchLogsUriBuilder WithLogStreamNameFilter(string logStreamNameFilter)
+        public IBuild WithLogStreamNameFilter(string logStreamNameFilter)
         {
             _queryComponents[LogStreamNameFilter] = new LogStreamNameFilterComponent(logStreamNameFilter);
 
             return this;
         }
 
-        public CloudWatchLogsUriBuilder WithAbsoluteRange(DateTime start, DateTime end)
+        public ILogStreamOptions WithAbsoluteRange(DateTime start, DateTime end)
         {
             _queryComponents[TimeRange] = new AbsoluteTimeRangeComponent(start, end);
 
             return this;
         }
 
-        public CloudWatchLogsUriBuilder WithRelativeRangeMilliseconds(uint lastMilliseconds)
+        public ILogStreamOptions WithRelativeRangeMilliseconds(uint lastMilliseconds)
         {
             _queryComponents[TimeRange] = new RelativeTimeRangeComponent(lastMilliseconds);
 
             return this;
         }
 
-        public CloudWatchLogsUriBuilder WithFilter(string filter)
+        public ILogStreamOptions WithFilter(string filter)
         {
             _queryComponents[Filter] = new FilterComponent(filter);
 
