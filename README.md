@@ -20,7 +20,7 @@ https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logsV2
 ```
 Which, when opened in the AWS CloudWatch Logs Insights Portal looks like this:
 
-![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/insightsportal.png)
+![](https://raw.githubusercontent.com/waxtell/AWSConsole.Uri.Builder/feature/cloudwatchlogs/assets/insightsportal.png)
 
 ## Usage for XRay:
 
@@ -37,7 +37,7 @@ https://us-east-2.console.aws.amazon.com/xray/home?region=us-east-2#/traces?filt
 ```
 Which, when opened in the AWS XRay Traces Portal looks like this:
 
-![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/xrayportal.png)
+![](https://raw.githubusercontent.com/waxtell/AWSConsole.Uri.Builder/feature/cloudwatchlogs/assets/xrayportal.png)
 
 ## Usage for CloudWatch Logs:
 
@@ -53,4 +53,4 @@ https://us-east-2.console.aws.amazon.com/cloudwatch/home?region=us-east-2#logsV2
 ```
 Which, when opened in the AWS CloudWatch Logs Portal looks like this:
 
-![](https://raw.githubusercontent.com/waxtell/AWS.Uri.Builder/develop/assets/logsportal.png)
+![](https://raw.githubusercontent.com/waxtell/AWSConsole.Uri.Builder/feature/cloudwatchlogs/assets/logsportal.png)
