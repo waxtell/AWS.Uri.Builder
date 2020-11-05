@@ -15,7 +15,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .False(uri.Fragment.Contains("source=".Escape()));
+                .False(uri.Fragment.Contains("source~".Escape()));
         }
 
         [Theory]
@@ -27,7 +27,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .True(uri.Fragment.Contains("source=(='test)".Escape()));
+                .True(uri.Fragment.Contains("source~(~'test)".Escape()));
         }
 
         [Theory]
@@ -39,7 +39,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
                 .Build();
 
             Assert
-                .True(uri.Fragment.Contains("source=(='test1='test2)".Escape()));
+                .True(uri.Fragment.Contains("source~(~'test1~'test2)".Escape()));
         }
     }
 }

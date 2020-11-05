@@ -15,7 +15,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .True(uri.Fragment.Contains("isLiveTail=true".Escape()));
+                .True(uri.Fragment.Contains("isLiveTail~true".Escape()));
         }
 
         [Theory]
@@ -27,7 +27,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .True((bool) uri.Fragment.Contains("isLiveTail=false".Escape()));
+                .True((bool) uri.Fragment.Contains("isLiveTail~false".Escape()));
         }
 
         [Theory]
@@ -38,7 +38,7 @@ namespace AWSConsole.Uri.Builder.Tests.CloudWatchLogsInsights
                         .Build();
 
             Assert
-                .True(uri.Fragment.Contains("isLiveTail=false".Escape()));
+                .True(uri.Fragment.Contains("isLiveTail~false".Escape()));
         }
     }
 }

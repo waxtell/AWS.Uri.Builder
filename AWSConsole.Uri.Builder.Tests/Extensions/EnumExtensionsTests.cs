@@ -9,19 +9,19 @@ namespace AWSConsole.Uri.Builder.Tests.Extensions
         [Theory]
         public void TryGetName_ValidValueResolvesToName()
         {
-            var trt = TimeReferenceType.Absolute;
+            const TimeZoneType tzt = TimeZoneType.Local;
 
             Assert
-                .AreEqual(nameof(TimeReferenceType.Absolute), trt.TryGetName());
+                .AreEqual(nameof(TimeZoneType.Local), tzt.TryGetName());
         }
 
         [Theory]
         public void TryGetName_InValidValueResolvesToNull()
         {
-            var trt = (TimeReferenceType) int.MaxValue;
+            const TimeZoneType tzt = (TimeZoneType) int.MaxValue;
 
             Assert
-                .AreEqual(null, trt.TryGetName());
+                .AreEqual(null, tzt.TryGetName());
         }
     }
 }
