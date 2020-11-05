@@ -17,11 +17,11 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights.Components
                 string
                     .Join
                     (
-                        "=",
-                        "end='0",
-                        $"start='-{_seconds}",
-                        "timeType='RELATIVE",
-                        "unit='seconds"
+                        "~",
+                        "end~0",
+                        $"start~-{_seconds}",
+                        "timeType~'RELATIVE",
+                        "unit~'seconds"
                     )
                     .Escape();
         }

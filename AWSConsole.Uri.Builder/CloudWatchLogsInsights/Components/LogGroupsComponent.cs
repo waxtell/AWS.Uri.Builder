@@ -18,7 +18,7 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights.Components
         public string Build()
         {
             return
-                $"source=(='{string.Join("='", _logGroups.Select(logGroup => logGroup.ToHexString()))})"
+                $"source~(~'{string.Join("~'", _logGroups.Select(logGroup => logGroup.ToHexString()))})"
                     .Escape();
         }
     }

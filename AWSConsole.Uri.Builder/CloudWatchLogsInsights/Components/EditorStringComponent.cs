@@ -17,10 +17,11 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights.Components
                 string
                     .Join
                     (
-                        "='".Escape(),
+                        "~'".Escape(),
                         "editorString",
                         $"{_query}\n".ToHexString("*", false, false)
-                    );
+                    )
+                    .Replace(" ","+");
         }
     }
 }

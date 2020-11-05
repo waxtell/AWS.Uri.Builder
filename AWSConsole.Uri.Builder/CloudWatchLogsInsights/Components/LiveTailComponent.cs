@@ -17,7 +17,7 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights.Components
                 string
                     .Join
                     (
-                        "=",
+                        "~",
                         "isLiveTail",
                         $"{_liveTail.ToString().ToLower()}"
                     )

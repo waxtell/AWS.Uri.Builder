@@ -23,11 +23,11 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights.Components
                 string
                     .Join
                     (
-                        "=",
-                        $"end='{_end.ToString(Constants.DateTimeFormatString).ToHexString()}",
-                        $"start='{_start.ToString(Constants.DateTimeFormatString).ToHexString()}",
-                        "timeType='ABSOLUTE",
-                        $"tz='{_timeZoneType.TryGetName()}"
+                        "~",
+                        $"end~'{_end.ToString(Constants.DateTimeFormatString).ToHexString()}",
+                        $"start~'{_start.ToString(Constants.DateTimeFormatString).ToHexString()}",
+                        "timeType~'ABSOLUTE",
+                        $"tz~'{_timeZoneType.TryGetName()}"
                     )
                     .Escape();
         }

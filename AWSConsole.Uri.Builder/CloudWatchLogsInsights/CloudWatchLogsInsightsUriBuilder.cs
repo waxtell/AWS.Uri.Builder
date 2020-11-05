@@ -85,13 +85,13 @@ namespace AWSConsole.Uri.Builder.CloudWatchLogsInsights
             {
                 builder
                     .Append("?queryDetail=".ToHexString("$", true))
-                    .Append("=(".Escape())
+                    .Append("~(".Escape())
                     .Append
                     (
                         string
                             .Join
                             (
-                                "=".Escape(),
+                                "~".Escape(),
                                 _queryComponents.Values.Select(component => component.Build())
                             )
                     )
